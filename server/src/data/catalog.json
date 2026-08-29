@@ -1,0 +1,74 @@
+[
+  {
+    "id": "c1",
+    "title": "React Server Components Explained",
+    "tags": ["react", "frontend", "architecture"],
+    "description": "A deep dive into how server components change data fetching and bundle size in modern React apps."
+  },
+  {
+    "id": "c2",
+    "title": "Designing REST APIs That Scale",
+    "tags": ["backend", "api-design", "architecture"],
+    "description": "Patterns for pagination, versioning, and rate limiting in production APIs."
+  },
+  {
+    "id": "c3",
+    "title": "Prompt Engineering for Structured Output",
+    "tags": ["ai", "llm", "prompting"],
+    "description": "Techniques for getting reliable JSON and tool calls out of large language models."
+  },
+  {
+    "id": "c4",
+    "title": "CSS Grid vs Flexbox in 2026",
+    "tags": ["css", "frontend", "layout"],
+    "description": "A practical comparison of when to reach for grid versus flexbox in real layouts."
+  },
+  {
+    "id": "c5",
+    "title": "Building Realtime Apps with WebSockets",
+    "tags": ["backend", "realtime", "networking"],
+    "description": "How to design realtime features with WebSockets, including reconnect and backpressure strategies."
+  },
+  {
+    "id": "c6",
+    "title": "An Introduction to Vector Databases",
+    "tags": ["ai", "search", "databases"],
+    "description": "What embeddings and vector databases are, and how they power semantic search and RAG."
+  },
+  {
+    "id": "c7",
+    "title": "TypeScript Generics for Everyday Code",
+    "tags": ["typescript", "frontend", "backend"],
+    "description": "Practical generic patterns that make everyday TypeScript code safer without adding complexity."
+  },
+  {
+    "id": "c8",
+    "title": "Streaming AI Responses with Server-Sent Events",
+    "tags": ["ai", "llm", "streaming", "frontend"],
+    "description": "How SSE works, why it fits LLM token streaming, and how to consume it from a React client."
+  },
+  {
+    "id": "c9",
+    "title": "State Management Without a Library",
+    "tags": ["react", "frontend", "state"],
+    "description": "Using context and reducers to manage app state before reaching for an external library."
+  },
+  {
+    "id": "c10",
+    "title": "Evaluating LLM Outputs Automatically",
+    "tags": ["ai", "llm", "testing"],
+    "description": "Approaches for scoring and regression-testing LLM-generated content in CI."
+  },
+  {
+    "id": "c11",
+    "title": "Accessible Forms in React",
+    "tags": ["frontend", "accessibility", "react"],
+    "description": "Building forms that work well with screen readers and keyboard navigation."
+  },
+  {
+    "id": "c12",
+    "title": "Caching Strategies for API-Heavy Frontends",
+    "tags": ["frontend", "performance", "api-design"],
+    "description": "When to cache on the client, at the edge, or on the server, and how to invalidate correctly."
+  }
+]

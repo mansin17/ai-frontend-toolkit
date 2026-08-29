@@ -1,0 +1,77 @@
+[
+  {
+    "id": "d1",
+    "title": "Handling Rate Limits from Third-Party APIs",
+    "content": "When calling external APIs, implement exponential backoff with jitter and respect Retry-After headers to avoid cascading failures."
+  },
+  {
+    "id": "d2",
+    "title": "Why Our Checkout Page Latency Spiked",
+    "content": "A post-incident review showing that an unindexed database query on the orders table caused a 3x latency increase during peak traffic."
+  },
+  {
+    "id": "d3",
+    "title": "Migrating from REST to GraphQL",
+    "content": "Notes on incrementally introducing GraphQL alongside an existing REST API, including schema stitching and client migration order."
+  },
+  {
+    "id": "d4",
+    "title": "Debugging Memory Leaks in Node.js Services",
+    "content": "Using heap snapshots and the --inspect flag to find detached closures and unbounded caches causing memory growth over time."
+  },
+  {
+    "id": "d5",
+    "title": "Setting Up CI for a Monorepo",
+    "content": "Configuring pipeline caching and affected-project detection so CI only rebuilds and retests packages that actually changed."
+  },
+  {
+    "id": "d6",
+    "title": "Choosing Between SQL and NoSQL for a New Service",
+    "content": "A comparison of relational and document databases based on query patterns, consistency needs, and expected write volume."
+  },
+  {
+    "id": "d7",
+    "title": "Authentication Patterns: Sessions vs JWTs",
+    "content": "Trade-offs between server-side sessions and stateless JWTs, including revocation, storage, and cross-service authentication."
+  },
+  {
+    "id": "d8",
+    "title": "Improving Largest Contentful Paint on a Marketing Site",
+    "content": "Steps taken to cut LCP from 4.2s to 1.6s, including image preloading, font subsetting, and removing render-blocking scripts."
+  },
+  {
+    "id": "d9",
+    "title": "Designing a Retry Queue for Failed Webhooks",
+    "content": "How a delayed job queue with capped exponential backoff was used to reliably deliver webhooks despite intermittent consumer downtime."
+  },
+  {
+    "id": "d10",
+    "title": "Feature Flags Without Vendor Lock-In",
+    "content": "Building a lightweight feature flag system backed by a config file and environment overrides, with a path to a hosted service later."
+  },
+  {
+    "id": "d11",
+    "title": "Load Testing an API Before a Product Launch",
+    "content": "Using a load testing tool to simulate traffic spikes and identify the database connection pool as the first bottleneck."
+  },
+  {
+    "id": "d12",
+    "title": "Structuring Logs for Easier Incident Response",
+    "content": "Moving to structured JSON logs with request IDs made it possible to trace a single request across multiple services during an outage."
+  },
+  {
+    "id": "d13",
+    "title": "Reducing Bundle Size in a Large React App",
+    "content": "Code splitting by route and lazy-loading rarely used components reduced the initial JavaScript bundle by 40%."
+  },
+  {
+    "id": "d14",
+    "title": "Handling Partial Failures in Distributed Transactions",
+    "content": "Using the saga pattern with compensating actions to keep data consistent when a multi-step transaction fails partway through."
+  },
+  {
+    "id": "d15",
+    "title": "Writing Idempotent API Endpoints",
+    "content": "Using idempotency keys so that retried POST requests, such as payment submissions, don't create duplicate side effects."
+  }
+]
