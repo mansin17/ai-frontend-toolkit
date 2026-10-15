@@ -1,4 +1,4 @@
-export type Provider = "openai" | "anthropic";
+export type Provider = "groq" | "gemini" | "openrouter";
 
 export interface ChatMessage {
   role: "user" | "assistant";

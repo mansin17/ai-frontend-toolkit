@@ -1,9 +1,9 @@
 import { Router } from "express";
 import {
-  DEFAULT_MODELS,
+  INVALID_PROVIDER_MESSAGE,
   MissingApiKeyError,
-  getAnthropic,
-  getOpenAI,
+  defaultModel,
+  getClient,
   isProvider,
 } from "../lib/providers.js";
 
@@ -26,7 +26,7 @@ router.post("/chat", async (req, res) => {
   };
 
   if (!isProvider(provider)) {
-    res.status(400).json({ error: 'provider must be "openai" or "anthropic"' });
+    res.status(400).json({ error: INVALID_PROVIDER_MESSAGE });
     return;
   }
   if (!Array.isArray(messages) || messages.length === 0) {
@@ -39,29 +39,16 @@ router.post("/chat", async (req, res) => {
   res.setHeader("Connection", "keep-alive");
   res.flushHeaders();
 
-  const chosenModel = model || DEFAULT_MODELS[provider];
-
   try {
-    if (provider === "openai") {
-      const client = getOpenAI();
-      const stream = await client.chat.completions.create({
-        model: chosenModel,
-        messages,
-        stream: true,
-      });
-      for await (const chunk of stream) {
-        const delta = chunk.choices[0]?.delta?.content;
-        if (delta) sendEvent(res, { delta });
-      }
-    } else {
-      const client = getAnthropic();
-      const stream = client.messages.stream({
-        model: chosenModel,
-        max_tokens: 1024,
-        messages,
-      });
-      stream.on("text", (delta) => sendEvent(res, { delta }));
-      await stream.finalMessage();
+    const client = getClient(provider);
+    const stream = await client.chat.completions.create({
+      model: model || defaultModel(provider),
+      messages,
+      stream: true,
+    });
+    for await (const chunk of stream) {
+      const delta = chunk.choices[0]?.delta?.content;
+      if (delta) sendEvent(res, { delta });
     }
     sendEvent(res, { done: true });
   } catch (err) {

@@ -1,6 +1,7 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
+import { PROVIDER_IDS, hasApiKey } from "./lib/providers.js";
 import chatRouter from "./routes/chat.js";
 import recommendRouter from "./routes/recommend.js";
 import searchRouter from "./routes/search.js";
@@ -17,10 +18,7 @@ app.use(express.json({ limit: "1mb" }));
 app.get("/api/health", (_req, res) => {
   res.json({
     ok: true,
-    providers: {
-      openai: Boolean(process.env.OPENAI_API_KEY),
-      anthropic: Boolean(process.env.ANTHROPIC_API_KEY),
-    },
+    providers: Object.fromEntries(PROVIDER_IDS.map((id) => [id, hasApiKey(id)])),
   });
 });
 

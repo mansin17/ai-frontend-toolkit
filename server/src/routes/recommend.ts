@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { completeJSON } from "../lib/jsonCompletion.js";
-import { MissingApiKeyError, isProvider } from "../lib/providers.js";
+import { INVALID_PROVIDER_MESSAGE, MissingApiKeyError, isProvider } from "../lib/providers.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const catalog: { id: string; title: string; tags: string[]; description: string }[] = JSON.parse(
@@ -24,7 +24,7 @@ router.post("/recommend", async (req, res) => {
   };
 
   if (!isProvider(provider)) {
-    res.status(400).json({ error: 'provider must be "openai" or "anthropic"' });
+    res.status(400).json({ error: INVALID_PROVIDER_MESSAGE });
     return;
   }
   if (!interests || typeof interests !== "string" || !interests.trim()) {

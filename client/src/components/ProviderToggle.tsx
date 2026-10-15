@@ -6,8 +6,9 @@ interface ProviderToggleProps {
 }
 
 const OPTIONS: { value: Provider; label: string }[] = [
-  { value: "openai", label: "OpenAI" },
-  { value: "anthropic", label: "Anthropic" },
+  { value: "groq", label: "Groq" },
+  { value: "gemini", label: "Gemini" },
+  { value: "openrouter", label: "OpenRouter" },
 ];
 
 export function ProviderToggle({ provider, onChange }: ProviderToggleProps) {

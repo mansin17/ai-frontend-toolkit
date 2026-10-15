@@ -8,14 +8,14 @@ import type { Provider } from "./types";
 
 export default function App() {
   const [tab, setTab] = useState<TabId>("chat");
-  const [provider, setProvider] = useState<Provider>("openai");
+  const [provider, setProvider] = useState<Provider>("groq");
 
   return (
     <div className="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 px-4 py-10">
       <header className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold tracking-tight">AI Frontend Toolkit</h1>
         <p className="text-sm text-slate-400">
-          Three AI-powered frontend patterns built on OpenAI &amp; Anthropic: streaming chat over SSE,
+          Three AI-powered frontend patterns built on free LLM APIs (Groq, Gemini, OpenRouter): streaming chat over SSE,
           LLM-driven content recommendations, and intelligent natural-language search.
         </p>
       </header>

@@ -2,7 +2,7 @@
   "name": "ai-frontend-toolkit",
   "version": "1.0.0",
   "private": true,
-  "description": "AI-powered frontend features (streaming chat, recommendations, intelligent search) built with React, Express, OpenAI and Anthropic.",
+  "description": "AI-powered frontend features (streaming chat, recommendations, intelligent search) built with React, Express and free LLM APIs (Groq, Gemini, OpenRouter).",
   "license": "MIT",
   "scripts": {
     "install:all": "npm install --prefix server && npm install --prefix client",
