@@ -1,3 +1,5 @@
+import { useSlidingIndicator } from "../hooks/useSlidingIndicator";
+
 export type TabId = "chat" | "recommend" | "search";
 
 interface TabNavProps {
@@ -12,22 +14,24 @@ const TABS: { id: TabId; label: string }[] = [
 ];
 
 export function TabNav({ active, onChange }: TabNavProps) {
+  const { containerRef, indicatorStyle } = useSlidingIndicator(active);
+
   return (
-    <nav className="flex gap-1 border-b border-slate-800">
+    <nav ref={containerRef} className="relative flex min-w-0 max-w-full gap-1 overflow-x-auto [scrollbar-width:none] border-b border-line">
       {TABS.map((tab) => (
         <button
           key={tab.id}
+          data-key={tab.id}
           type="button"
           onClick={() => onChange(tab.id)}
-          className={`px-4 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors ${
-            active === tab.id
-              ? "border-emerald-500 text-emerald-400"
-              : "border-transparent text-slate-400 hover:text-slate-200"
+          className={`shrink-0 px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
+            active === tab.id ? "text-accent-ink" : "text-muted hover:text-fg"
           }`}
         >
           {tab.label}
         </button>
       ))}
+      <span aria-hidden className="absolute bottom-0 left-0 h-0.5 rounded-full bg-accent" style={indicatorStyle} />
     </nav>
   );
 }
