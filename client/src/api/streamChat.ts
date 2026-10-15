@@ -1,4 +1,5 @@
 import type { ChatMessage, Provider } from "../types";
+import { apiUrl } from "./apiUrl";
 
 interface StreamChatArgs {
   provider: Provider;
@@ -13,7 +14,7 @@ interface StreamChatArgs {
  * ("data: {...}\n\n") straight out of the fetch response stream.
  */
 export async function streamChat({ provider, messages, onDelta, signal }: StreamChatArgs): Promise<void> {
-  const response = await fetch("/api/chat", {
+  const response = await fetch(apiUrl("/api/chat"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ provider, messages }),

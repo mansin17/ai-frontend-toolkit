@@ -58,12 +58,12 @@ cp server/.env.example server/.env
 Edit `server/.env` and add at least one key (all free, no credit card):
 
 ```
-GROQ_API_KEY=gsk_...         # https://console.groq.com/keys
-GEMINI_API_KEY=...           # https://aistudio.google.com/apikey
-OPENROUTER_API_KEY=sk-or-... # https://openrouter.ai/settings/keys
+AFT_GQ_TOKEN=gsk_...         # https://console.groq.com/keys
+AFT_GM_TOKEN=...           # https://aistudio.google.com/apikey
+AFT_OR_TOKEN=sk-or-... # https://openrouter.ai/settings/keys
 ```
 
-Default models can be overridden with `GROQ_MODEL`, `GEMINI_MODEL` and `OPENROUTER_MODEL`.
+Default models can be overridden with `AFT_GQ_MODEL`, `AFT_GM_MODEL` and `AFT_OR_MODEL`.
 
 You only need one provider's key — the UI lets you pick which provider to use, and any request to a provider without a configured key returns a clear error instead of crashing the server.
 
@@ -75,6 +75,27 @@ npm run dev
 
 - Client: http://localhost:5173
 - Server: http://localhost:8787
+
+## Deploying
+
+In production the Express server also serves the built React app, so the whole project runs as **one web service** on one URL (no CORS or proxy setup needed).
+
+**Render (free):**
+
+1. Push this repo to GitHub.
+2. On [render.com](https://render.com), choose **New → Blueprint** and select the repo. It reads [`render.yaml`](render.yaml).
+3. When prompted, paste your `AFT_GQ_TOKEN`, `AFT_GM_TOKEN` and/or `AFT_OR_TOKEN`. Leave unused ones empty.
+4. Deploy. Your app will be at `https://<service-name>.onrender.com`.
+
+**Frontend on Netlify + backend on Render:** Netlify can't run the Express server, so deploy the backend to Render as above, then:
+
+1. On Netlify, import the repo. [`netlify.toml`](netlify.toml) builds `client/` and publishes `client/dist`.
+2. In Netlify → **Site configuration → Environment variables**, add `VITE_API_URL` = your Render URL (e.g. `https://ai-frontend-toolkit.onrender.com`), then redeploy.
+3. On Render, make sure `CLIENT_ORIGIN` is your Netlify URL (e.g. `https://spark-prompt.netlify.app`) so the browser is allowed to call the API.
+
+**Any other Node host** (Railway, Fly.io, a VPS…): build with `npm run install:all && npm run build`, start with `npm start`, and set the API keys as environment variables in the host's dashboard. The host's `PORT` is picked up automatically.
+
+API keys live only in the server's environment — never in the repo (`server/.env` is gitignored) and never in the browser bundle. Each visitor IP is limited to 20 API requests per minute (`AFT_RATE_LIMIT`) so a public deployment can't drain your free quotas.
 
 ## Notes on the mock data
 

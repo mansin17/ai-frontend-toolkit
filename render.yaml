@@ -1,0 +1,24 @@
+# One-click deploy on Render (https://render.com): New → Blueprint → pick this repo.
+# The Express server builds and serves the React app, so it's a single web service.
+services:
+  - type: web
+    name: ai-frontend-toolkit
+    runtime: node
+    plan: free
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Frontend hosted on Netlify — allowed to call this API (comma-separate to add more)
+      - key: CLIENT_ORIGIN
+        value: https://spark-prompt.netlify.app
+      # Secrets: Render asks for these values when you create the service.
+      # Leave any you don't use empty.
+      - key: AFT_GQ_TOKEN
+        sync: false
+      - key: AFT_GM_TOKEN
+        sync: false
+      - key: AFT_OR_TOKEN
+        sync: false
