@@ -14,20 +14,20 @@ interface ProviderConfig {
 const PROVIDERS: Record<Provider, ProviderConfig> = {
   groq: {
     baseURL: "https://api.groq.com/openai/v1",
-    apiKeyEnv: "GROQ_API_KEY",
-    modelEnv: "GROQ_MODEL",
+    apiKeyEnv: "AFT_GQ_TOKEN",
+    modelEnv: "AFT_GQ_MODEL",
     defaultModel: "openai/gpt-oss-120b",
   },
   gemini: {
     baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
-    apiKeyEnv: "GEMINI_API_KEY",
-    modelEnv: "GEMINI_MODEL",
+    apiKeyEnv: "AFT_GM_TOKEN",
+    modelEnv: "AFT_GM_MODEL",
     defaultModel: "gemini-flash-latest",
   },
   openrouter: {
     baseURL: "https://openrouter.ai/api/v1",
-    apiKeyEnv: "OPENROUTER_API_KEY",
-    modelEnv: "OPENROUTER_MODEL",
+    apiKeyEnv: "AFT_OR_TOKEN",
+    modelEnv: "AFT_OR_MODEL",
     // Routes to whichever free model is currently available.
     defaultModel: "openrouter/free",
   },

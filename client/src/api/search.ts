@@ -1,4 +1,5 @@
 import type { Provider, SearchMatch } from "../types";
+import { apiUrl } from "./apiUrl";
 
 interface SearchResponse {
   summary: string;
@@ -6,7 +7,7 @@ interface SearchResponse {
 }
 
 export async function runSearch(provider: Provider, query: string): Promise<SearchResponse> {
-  const response = await fetch("/api/search", {
+  const response = await fetch(apiUrl("/api/search"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ provider, query }),

@@ -1,10 +1,11 @@
 import type { Provider, RecommendationItem } from "../types";
+import { apiUrl } from "./apiUrl";
 
 export async function fetchRecommendations(
   provider: Provider,
   interests: string
 ): Promise<RecommendationItem[]> {
-  const response = await fetch("/api/recommend", {
+  const response = await fetch(apiUrl("/api/recommend"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ provider, interests }),
